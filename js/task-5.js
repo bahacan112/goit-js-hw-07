@@ -3,3 +3,12 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
+const button=document.querySelector('button.change-color');
+const body=document.querySelector('body');
+const span=document.querySelector('.color');
+
+button.addEventListener('click',()=>{
+  console.log("Tıklandı")
+    body.style.backgroundColor=getRandomHexColor();
+    span.textContent=getRandomHexColor();
+})
