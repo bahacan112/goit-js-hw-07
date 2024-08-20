@@ -9,31 +9,35 @@ const destroyButton = document.querySelector('[data-destroy]');
 
 
 function createBoxes(amount){
-  const divs=[];
-  document.querySelector('#boxes').innerHTML='';
+  const fragment = document.createDocumentFragment();
 
-  if (amount<1||amount>100){
-    return alert('Please enter a number between 1 and 100');
+  for (let i = 0; i < amount; i++) {
+    const div = document.createElement('div');
+    div.style.width = `${30 + i * 10}px`;
+    div.style.height = `${30 + i * 10}px`;
+    div.style.backgroundColor = getRandomHexColor();
+    fragment.appendChild(div);  
+
   }
-  for(let i=0;i<amount;i++){
-    const div=document.createElement('div');
-    div.style.width=`${30+i*10}px`;
-    div.style.height=`${30+i*10}px`;
-    div.style.backgroundColor=getRandomHexColor();
-    divs.push(div);
-  }
-  return divs;
-  }
+
+  return fragment; 
+}
 
 
 createButton.addEventListener('click',()=>{
   const amount=input.value;
+
+  if (amount<1||amount>100){
+    return alert('Please enter a number between 1 and 100');
+
+};
   const boxes=createBoxes(amount);
   input.value='';
-  console.log(boxes);
-  document.querySelector('#boxes').append(...boxes);
+const boxesContainer=document.querySelector('#boxes');
+boxesContainer.innerHTML='';
+boxesContainer.appendChild(boxes);
 })
 destroyButton.addEventListener('click',()=>{
   document.querySelector('#boxes').innerHTML='';
-})  
+}) 
 

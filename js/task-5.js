@@ -8,7 +8,7 @@ const body=document.querySelector('body');
 const span=document.querySelector('.color');
 
 button.addEventListener('click',()=>{
-  console.log("Tıklandı")
-    body.style.backgroundColor=getRandomHexColor();
-    span.textContent=getRandomHexColor();
+  const color=getRandomHexColor();
+    body.style.backgroundColor=color
+    span.textContent=color
 })
